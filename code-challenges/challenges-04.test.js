@@ -108,6 +108,15 @@ with the letters A through J, inclusive.
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  const regex=/^[A-Z][a-z]/g;
+  const result=[];
+  arr.forEach(item=>{
+    if(regex.test(item)){
+      result.push(item);
+
+    }
+  });
+  return result;
   
 };
 
