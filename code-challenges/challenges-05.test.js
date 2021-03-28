@@ -152,17 +152,14 @@ const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
 
-  recipe.ingredients.forEach(item => {
+   for(let item of recipe.ingredients){
 
-    let arr1 = item.split(' ');
+    result.push(item.slice(item.indexOf(' ')+1));
+   };
+   result.forEach((element,index) => {
+     result[index]=element.slice(element.indexOf(' ')+1);
 
-    let arr2 = arr1.slice(2);
-
-    let arr3= arr2.join(' ');
-    
-    result.push(arr3);
-
-  });
+   });
   return result;
 };
 
