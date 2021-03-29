@@ -58,6 +58,20 @@ let characters = [
 
 const sortByChildren = (charArray) => {
   // Solution code here...
+  characters.sort((a,b) => {
+    if (a.children.length > b.children.length){
+      return 1
+    }else if (a.children.length < b.children.length){
+      return -1
+    }else {
+      if (a.name > b.name){
+        return 1
+      }else if (a.name < b.name){
+        return -1
+      }
+    }
+  });
+  return characters;
  
 };
 
@@ -89,6 +103,14 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   // Solution code here...
+  for( let key in obj){
+    if( value === obj[key]){
+      return true;
+    }else {
+      return false;
+    }
+  }
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,14 +134,13 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   // Solution code here...
-  const objectPairs = Object.entries(obj);
-  const arr = [];
-  objectPairs.forEach(a=>{
-    arr.push(a[0] + ': ' + a[1]);
-  })
-  return arr;
+  let myArr = [];
+  for (let key in obj){
+    let data = key + ': ' + obj[key];
+    myArr.push(data);
+  }
+  return myArr;
 };
-
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -131,12 +152,10 @@ Write a function named getHouses that returns a new array containing the names o
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
-  const arrValues = Object.values(arr);
-  arrValues.forEach(a=>{
-    houses.push(a.house)
-  })
-  return arr;
-  
+  arr.forEach(element => {
+      houses.push(element.house)
+  });
+  return houses;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -155,7 +174,19 @@ hasChildrenValues(characters, 'Sansa') will return false
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
 
+  let test;
+
+    arr.forEach(element => {
+        if (element.name === character) {
+
+            Object.values(element)[2].length ? test = true : test = false;
+        }
+    })
+
+    return test;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
